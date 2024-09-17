@@ -43,7 +43,7 @@ export default class Merchandise {
         this._response = new Response(
           this.title,
           this.imgSrc,
-          `${this.title} has been added to your possesion.`,
+          `${this.title} has been added to Possesion.`,
           false
         );
         possession.addProperty(this.createGoods());
@@ -61,7 +61,7 @@ export default class Merchandise {
         this._response = new Response(
           this.title,
           this.imgSrc,
-          `${this.title} has been added to your resources.`,
+          `${this.title} has been added to Warehouse.`,
           false
         );
         warehouse.load(this.createGoods());
