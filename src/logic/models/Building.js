@@ -9,6 +9,8 @@ export default class Building {
     this.createTerrain = createTerrain;
   }
 
+  response = () => this.buildingType.response();
+
   imgSrc = () => {
     return this.buildingType.imgSrc;
   }

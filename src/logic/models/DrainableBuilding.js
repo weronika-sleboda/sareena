@@ -1,4 +1,5 @@
 import stopImg from "../../ui/images/stop.svg";
+import Response from "../models/Response";
 
 export default class DrainableBuilding {
   constructor(title, imgSrc, btnImgSrc, createRes) {
@@ -8,14 +9,17 @@ export default class DrainableBuilding {
     this._deposit = 1;
     this._createRes = createRes;
     this.isBtnHidden = false;
+    this._response = new Response();
   }
+
+  response = () => this._response;
 
   info = () => "";
 
   progress = () => {
     this._deposit = 1;
     this.isBtnHidden = false;
-  }
+  };
 
   process = (warehouse) => {
     if (warehouse.isFull()) {
@@ -32,7 +36,7 @@ export default class DrainableBuilding {
       warehouse.load(this._createRes());
       this.isBtnHidden = true;
     }
-  }
+  };
 
-  destroy = () => {}
+  destroy = () => {};
 }
