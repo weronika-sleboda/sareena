@@ -4,9 +4,11 @@ export default class SellableResource {
   constructor(title, imgSrc, price) {
     this.title = title;
     this.imgSrc = imgSrc;
-    this.btnImgSrc = sellImg;
+    this._btnImgSrc = sellImg;
     this.price = price;
   }
+
+  btnImgSrc = () => this._btnImgSrc;
 
   isBtnHidden = () => false;
 

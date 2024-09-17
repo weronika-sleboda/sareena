@@ -10,7 +10,7 @@ export default class Resource {
   }
 
   btnImgSrc = () => {
-    return this.resourceType.btnImgSrc;
+    return this.resourceType.btnImgSrc();
   }
 
   title = () =>  this.resourceType.title;
