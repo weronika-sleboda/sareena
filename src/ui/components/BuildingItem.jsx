@@ -2,8 +2,10 @@
 import PlayerContext from "../contexts/PlayerContext";
 import { useContext } from "react";
 import destroyImg from "../images/destroy.svg";
+import SystemContext from "../contexts/SystemContext";
 
 export default function BuildingItem({ building }) {
+  const { system, setSystem } = useContext(SystemContext);
   const { player, setPlayer } = useContext(PlayerContext);
   const { possession, warehouse } = player;
   const {
@@ -13,7 +15,8 @@ export default function BuildingItem({ building }) {
     btnLabel,
     isBtnHidden,
     destroy,
-    process
+    process,
+    response
   } = building;
 
   const onClickDestroy = () => {
@@ -21,9 +24,10 @@ export default function BuildingItem({ building }) {
     setPlayer({ ...player });
   };
 
-  const onClickBuild = () => {
+  const onClickProcess = () => {
     process(warehouse);
     setPlayer({ ...player });
+    setSystem({ ...system, response: response() });
   };
 
   return (
@@ -54,7 +58,7 @@ export default function BuildingItem({ building }) {
         ) : (
           <div
             className="item__btn-img-container"
-            onClick={onClickBuild}
+            onClick={onClickProcess}
           >
             <img
               className="item__btn-img"

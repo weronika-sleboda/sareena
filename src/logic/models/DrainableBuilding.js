@@ -1,3 +1,4 @@
+import stopImg from "../../ui/images/stop.svg";
 
 export default class DrainableBuilding {
   constructor(title, imgSrc, btnImgSrc, createRes) {
@@ -17,7 +18,15 @@ export default class DrainableBuilding {
   }
 
   process = (warehouse) => {
-    if (warehouse.isFull()) return;
+    if (warehouse.isFull()) {
+      this._response = new Response(
+        "Full Warehouse",
+        stopImg,
+        "Your warehouse is already full.",
+        false
+      );
+      return;
+    }
     if (this._deposit === 1) {
       this._deposit = 0;
       warehouse.load(this._createRes());

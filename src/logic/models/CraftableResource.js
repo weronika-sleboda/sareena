@@ -1,15 +1,22 @@
 import { RESOURCE_ACTIONS } from "../constants/resourceActions";
+import sellImg from "../../ui/images/sell.svg";
 
 export default class CraftableResource {
   constructor(title, imgSrc, btnImgSrc, price, time, product) {
     this.title = title;
     this.imgSrc = imgSrc;
-    this.btnImgSrc = btnImgSrc;
+    this._btnImgSrc = btnImgSrc;
     this.price = price;
     this._action = RESOURCE_ACTIONS.CRAFT;
     this._inProgress = false;
     this._time = time;
     this._product = product;
+  }
+
+  btnImgSrc = () => {
+    return this._action === RESOURCE_ACTIONS.SELL
+      ? sellImg
+      : this._btnImgSrc;
   }
 
   isBtnHidden = () => this._inProgress;
